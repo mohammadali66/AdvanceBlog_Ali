@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block head_title %}{{ post.title }} | {{ block.super }} {% endblock head_title %}
+
+{% block content %}
+	<div class="col-sm-6 col-sm-offset-3">
+		{% if post.image %}
+			<img src="{{ post.image.url }}" class="img-responsive" />
+		{% endif %}
+		
+		<h1>
+			{{ post.title }}			 
+			<small>
+				{% if post.draft %}<span style="color:red;">Draft</span>{% endif %}
+				{{ post.timestamp }}
+			</small>
+		</h1>
+		<p>Author: {{ post.user }}</p>
+			
+		{{ post.content | linebreaks }}
+	</div>
+	
+
+{% endblock content %}
